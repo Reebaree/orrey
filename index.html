@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
+    <title>Orrery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="tooltip"></div>
+
+    <button class="menu-button" id="menuButton">
+        <img src="icons/menu.svg" alt="menu" width="24" height="24">
+    </button>
+
+    <button id="toggleOrbitsButton" class="toggle-orbits-button" title="Remove Orbits">
+        <img id="toggleOrbitsIcon" src="icons/remove.svg" alt="Hide Orbits" width="24" height="24">
+    </button>    
+
+    <button id="pausePlayButton" class="pause-play-button" title="Pause Animation">
+        <img id="playPauseIcon" src="icons/pause.svg" alt="Pause Icon" width="24" height="24">
+    </button>
+
+    <div class="drawer" id="drawer">
+        <h2>MENU</h2>
+        <br>
+        <ul>
+            <hr>
+            <li onclick="window.location.href='galaxy/galaxy.html'">Galaxy</li>
+            <li onclick="window.location.href='sun/sun.html'">Sun</li>
+            <li onclick="window.location.href='moon/moon.html'">Moon</li>
+            <li id="planetsItem">
+                <div class="parent">Planets <span>&#9660;</span></div>
+                <ul>
+                    <hr>
+                    <li onclick="window.location.href='mercury/mercury.html'">Mercury</li>
+                    <li onclick="window.location.href='venus/venus.html'">Venus</li>
+                    <li onclick="window.location.href='earth/earth.html'">Earth</li>
+                    <li onclick="window.location.href='mars/mars.html'">Mars</li>
+                    <li onclick="window.location.href='jupiter/jupiter.html'">Jupiter</li>
+                    <li onclick="window.location.href='saturn/saturn.html'">Saturn</li>
+                    <li onclick="window.location.href='uranus/uranus.html'">Uranus</li>
+                    <li onclick="window.location.href='neptune/neptune.html'">Neptune</li>
+                </ul>
+            </li>
+            <li id="dwarfPlanetsItem">
+                <div class="parent"> Dwarf Planets <span>&#9660;</span></div>
+                <ul>
+                    <hr>
+                    <li onclick="window.location.href='pluto/pluto.html'">Pluto</li>
+                    <li onclick="window.location.href='ceres/ceres.html'">Ceres</li>
+                    <li onclick="window.location.href='haumea/haumea.html'">Haumea</li>
+                    <li onclick="window.location.href='makemake/makemake.html'">Makemake</li>
+                    <li onclick="window.location.href='eris/eris.html'">Eris</li>
+                </ul>
+            </li>
+            <li id="asteroidsItem">
+                <div class="parent"> Asteroids <span>&#9660;</span></div>
+                <ul>
+                    <hr>
+                    <li onclick="window.location.href='eros/eros.html'">Eros</li>
+                    <li onclick="window.location.href='bennu/bennu.html'">Bennu</li>
+                    <li onclick="window.location.href='itokawa/itokawa.html'">Itokawa</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const drawer = document.getElementById('drawer');
+        const planetsItem = document.getElementById('planetsItem');
+        const dwarfPlanetsItem = document.getElementById('dwarfPlanetsItem');
+        const asteroidsItem = document.getElementById('asteroidsItem');
+
+        menuButton.addEventListener('click', () => {
+            drawer.classList.toggle('open');
+        });
+
+        planetsItem.addEventListener('click', (event) => {
+            event.stopPropagation();
+            planetsItem.classList.toggle('active');
+        });
+
+        dwarfPlanetsItem.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dwarfPlanetsItem.classList.toggle('active');
+        });
+
+        asteroidsItem.addEventListener('click', (event) => {
+            event.stopPropagation();
+            asteroidsItem.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
